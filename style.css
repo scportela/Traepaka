@@ -1,0 +1,144 @@
+body {
+  font: 14px Helvetica;
+  background: #999999;
+  margin-top: 0px;
+  border: 5px solid black;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+
+  /* all blocks are placed in a row direction, but in mobile layout, each is
+  full-length across main direction, so they will wrap (see in column) */
+  flex-flow: row wrap;
+}
+
+header {
+  background-color: #FF8000;
+  color: white;
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+article{
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* Bloque clases */
+
+.articulo {
+  background-color: #CEF6CE;
+  color:black;
+  flex-basis: 20%;
+  margin: 5px;
+}
+
+.articulo:hover{
+  background-color: #FE9A2E;
+}
+
+.imgVP{
+  width: 178px ;
+  height: 180px ;
+
+}
+
+.logo{
+  flex-basis: 30%;
+  order 1;
+}
+
+.busqueda{
+  flex-basis: 70%;
+  background-color: white;
+  color: black;
+  order 2;
+}
+
+.busqueda{
+  /* Bordes redondeados */
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 0px solid #000000;
+  /* Fin bordes redondeados */
+}
+
+
+
+/* Bloque ids */
+#mainnavigation {
+  background-color: lightgrey;
+  order: 1;
+}
+
+#maincontent {
+  background-color: red;
+  order: 2;
+}
+
+#news {
+  background-color: lightgrey;
+  order: 3;
+}
+
+footer {
+  background-color: black;
+  color: white;
+}
+
+footer {
+  order: 4;
+}
+
+/* mobile layout: single colum, all items occupy the entire row, so wrap */
+#news, #maincontent, #mainnavigation, footer {
+  flex-basis: 100%;
+}
+
+
+/* Small devices (tablets, 768px and up) */
+/* container width: 750 */
+@media (min-width: 768px) {
+ body {
+   width: 750px;
+   background-color: red;
+ }
+}
+
+/* Medium devices (desktops, 992px and up) */
+/* container width: 970 */
+@media (min-width: 992px) {
+ body {
+   width: 970px;
+   background-color: yellow;
+ }
+
+ /* article and nav will share the same row */
+ #maincontent {
+   flex-basis: 70%;
+ }
+ #mainnavigation {
+   flex-basis: 30%;
+ }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+/* container width: 1170px */
+@media (min-width: 1200px) {
+ body {
+   width: 1170px;
+   background-color: green;
+ }
+
+ /* article, nav and aside will share the same row */
+ #maincontent {
+   flex-basis: 60%;
+ }
+ #mainnavigation, #news {
+   flex-basis: 20%;
+ }
+}
