@@ -18,7 +18,7 @@ header {
   flex-basis: 100%;
   display: flex;
   flex-flow: row wrap;
-  height: 100px;
+  height: 20%;
   align-items: center;
 }
 
@@ -47,7 +47,9 @@ article{
 
 }
 
-.logo{
+.logo img{
+  height:60%;
+  width:60%;
   flex-basis: 30%;
   order 1;
 }
@@ -65,10 +67,13 @@ article{
   height: 30px;
   width: 100px;
   background-color: white;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
 .b-header-busqueda{
-  margin-right: 50px;
+  margin-right: 20%;
+  margin-left: 20%;
   width: 350px;
   height: 30px;
 }
@@ -79,19 +84,11 @@ article{
 
 
 /* Bloque ids */
-#mainnavigation {
-  background-color: lightgrey;
-  order: 1;
-}
+
 
 #maincontent {
   background-color: #FFFFFF;
   order: 2;
-}
-
-#news {
-  background-color: lightgrey;
-  order: 3;
 }
 
 footer {
@@ -104,7 +101,7 @@ footer {
 }
 
 /* mobile layout: single colum, all items occupy the entire row, so wrap */
-#news, #maincontent, #mainnavigation, footer {
+#maincontent, footer {
   flex-basis: 100%;
 }
 
@@ -127,13 +124,7 @@ footer {
  }
 
  /* article and nav will share the same row */
- #maincontent {
-   flex-basis: 70%;
- }
- #mainnavigation {
-   flex-basis: 30%;
- }
-}
+
 
 /* Large devices (large desktops, 1200px and up) */
 /* container width: 1170px */
@@ -144,10 +135,5 @@ footer {
  }
 
  /* article, nav and aside will share the same row */
- #maincontent {
-   flex-basis: 60%;
- }
- #mainnavigation, #news {
-   flex-basis: 20%;
- }
+
 }
