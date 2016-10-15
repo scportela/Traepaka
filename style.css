@@ -13,7 +13,7 @@ body {
 }
 
 header {
-  background-color: #FF8000;
+  background-color: #1E90FF;
   color: white;
   flex-basis: 100%;
   display: flex;
@@ -63,7 +63,7 @@ header {
 }
 
 .articuloContent:hover{
-  box-shadow: 0 0 0 2px #FF8000;
+  box-shadow: 0 0 0 2px   #87CEFA;
   transition: box-shadow .3s ease 0s;
 
 }
@@ -76,7 +76,7 @@ header {
 }
 
 .precio {
-  color: #FF8000;
+  color: #1E90FF;
   font-size: 18px;
 }
 
@@ -104,10 +104,10 @@ header {
 }
 
 .b-header{
-  color: white;
+  color: black;
   height: 30px;
   width: 100px;
-  background-color: #FFB380;
+  background-color: #F0F8FF;
   margin-left: 20px;
   margin-right: 5px;
 
@@ -129,19 +129,13 @@ header {
  
 }
 
-
-
 .b-header:hover{
-  background-color: #F7BE81;
+  background-color: #87CEFA ;
 }
-
-.fa fa-question-circle fa-2x
 
 
 
 /* Bloque ids */
-
-
 
 footer {
   background-color: black;
@@ -190,9 +184,6 @@ footer {
   /*como se coloca articulos en pc pobre*/
   #maincontent {
   background-color: #FFFFFF;
-  /*order: 2; 
-  margin-left: auto;
-  margin-right: auto;*/
   column-count: 3;
   column-gap: 6px;
   padding: 4px 6px;
@@ -217,9 +208,6 @@ header {
 /*como se coloca articulos en tablets*/
   #maincontent {
   background-color: #FFFFFF;
-  /*order: 2; 
-  margin-left: auto;
-  margin-right: auto;*/
   column-count: 2;
   column-gap: 6px;
   padding: 4px 6px;
@@ -238,14 +226,38 @@ header {
   flex-flow: row wrap;
   height: 20%;
   align-items: center;
+  
 }
+.b-header{
+  color: white;
+  height: 30px;
+  width: 100px;
+  background-color: #FFB380;
+  margin-left: 20px;
+  margin-right: 5px;
+
+}
+
+.b-header-busqueda{
+  margin-right: 15%;
+  margin-left: 25%;
+  width: 550px;
+  height: 30px;
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.header_botones{
+
+  margin-left: 10%;
+ 
+}
+
 
 /*como se coloca articulos en moviles*/
   #maincontent {
   background-color: #FFFFFF;
-  /*order: 2; 
-  margin-left: auto;
-  margin-right: auto;*/
   column-count: 1;
   column-gap: 6px;
   padding: 4px 6px;
@@ -266,39 +278,3 @@ header {
 
 
 
-
-
-/* Small devices (tablets, 768px and up) */
-/* container width: 750 */
-@media (min-width: 768px) {
-
- body {
-   width: 750px;
-   background-color: red;
- }
-}
-
-/* Medium devices (desktops, 992px and up) */
-/* container width: 970 */
-@media (min-width: 992px) {
-
- body {
-   width: 970px;
-   background-color: yellow;
- }
-
- /* article and nav will share the same row */
-
-
-/* Large devices (large desktops, 1200px and up) */
-/* container width: 1170px */
-@media (min-width: 1200px) {
-
- body {
-   width: 1170px;
-   background-color: green;
- }
-
- /* article, nav and aside will share the same row */
-
-}
