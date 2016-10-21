@@ -34,7 +34,7 @@ header {
 
 #maincontent {
   background-color: #FFFFFF;
-  /*order: 2; 
+  /*order: 2;
   margin-left: auto;
   margin-right: auto;*/
   column-count: 4;
@@ -42,6 +42,59 @@ header {
   padding: 4px 6px;
 }
 
+.chat{
+  border:1px solid #ddd;
+  break-inside: avoid;
+  padding: 3px 0;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  width:700px;
+}
+
+.conversacion{
+  border:1px solid #ddd;
+  float:left;
+  overflow: hidden;
+  width: 75%;
+}
+.mensajes{
+  border:1px solid #ddd;
+    width:100%;
+    overflow: auto;
+    height: 200px;
+    vertical-align: bottom;;
+}
+.enviar{
+  overflow: auto;
+}
+
+.mensajeEnviado{
+  max-width: 75%;
+    border:1px solid #ddd;
+  float: left;
+}
+
+.mensajeRecibido{
+  max-width: 75%;
+  border:1px solid #ddd;
+  float: right;
+}
+
+.producto{
+  float: right;
+  border:1px solid #ddd;
+  width: 25%;
+}
+
+.imagen{
+
+  width:100%;
+}
+
+.imageChat{
+  width:100%;
+}
 .articulo {
   /*background-color: transparent;*/
   color:black;
@@ -87,6 +140,35 @@ header {
   margin-bottom: 3px;
 }
 
+.listadoChats{
+  border:1px solid #ddd;
+  break-inside: avoid;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%
+}
+
+.chatLista{
+  height: 100px;
+}
+
+.imagenPerfil{
+  float: left;
+  height: 100%;
+  width: auto;
+}
+
+.vistaPreliminarChat{
+  float: left;
+}
+
+.imagenLista{
+  float: left;
+  height: 100%;
+  width: auto;
+}
+
 .header_logo img{
   height:60%;
   width:60%;
@@ -126,7 +208,7 @@ header {
 .header_botones{
 
   margin-left: 10%;
- 
+
 }
 
 .b-header:hover{
@@ -178,7 +260,7 @@ footer {
 }
 
 @media (max-width: 992px){
-  
+
 
 
   /*como se coloca articulos en pc pobre*/
@@ -226,7 +308,7 @@ header {
   flex-flow: row wrap;
   height: 20%;
   align-items: center;
-  
+
 }
 .b-header{
   color: white;
@@ -251,7 +333,7 @@ header {
 .header_botones{
 
   margin-left: 10%;
- 
+
 }
 
 
@@ -265,16 +347,3 @@ header {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
