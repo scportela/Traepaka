@@ -21,21 +21,11 @@ header {
   align-items: center;
 }
 
-/*article{
-  flex-basis: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  float: left;
-}*/
-
 /* Bloque clases */
 
 
 #maincontent {
   background-color: #FFFFFF;
-  /*order: 2;
-  margin-left: auto;
-  margin-right: auto;*/
   column-count: 4;
   column-gap: 6px;
   padding: 4px 6px;
