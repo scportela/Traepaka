@@ -31,14 +31,39 @@ header {
   padding: 4px 6px;
 }
 
+#maincontentLista {
+  background-color: #FFFFFF;
+  column-count: 3;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 6px;
+  padding: 4px 6px;
+  height: 100%;
+}
+
+#maincontentChat {
+  background-color: #FFFFFF;
+  column-count: 3;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 6px;
+  padding: 4px 6px;
+  height: 100%;
+}
 .chat{
   border:1px solid #ddd;
+  background-color: #eee;
   break-inside: avoid;
   padding: 3px 0;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
   width:700px;
+  height: 100%;
 }
 
 .conversacion{
@@ -49,10 +74,10 @@ header {
 }
 .mensajes{
   border:1px solid #ddd;
+  background-color: #FFF;
     width:100%;
     overflow: auto;
     height: 200px;
-    vertical-align: bottom;;
 }
 .enviar{
   overflow: auto;
@@ -125,32 +150,79 @@ header {
 }
 
 .listadoChats{
-  border:1px solid #ddd;
   break-inside: avoid;
   overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%
+  width:60%;
+
 }
 
 .chatLista{
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: #eee;
   height: 100px;
+  overflow: auto;
+  padding: 3px;
+  margin:3px;
 }
 
 .imagenPerfil{
   float: left;
+  overflow: hidden;
+  height: 100%;
+  width: auto;
+  padding: 3px;
+}
+
+.imagenPerfil img{
+
   height: 100%;
   width: auto;
 }
 
 .vistaPreliminarChat{
-  float: left;
+  overflow: hidden;
+  float:left;
+  padding: 3px;
 }
 
-.imagenLista{
+.imagenListaIzq{
+  break-inside: avoid;
   float: left;
+  overflow: hidden;
   height: 100%;
   width: auto;
+  padding: 3px;
+}
+
+.imagenListaDer{
+  break-inside: avoid;
+  float: right;
+  overflow: hidden;
+  height: 100%;
+  width: auto;
+  padding: 3px;
+}
+
+.imagenListaDer img {
+height: 100%;
+width: auto;
+
+}
+
+.imagenListaIzq img {
+height: 100%;
+width: auto;
+
+}
+
+.b-borrar{
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 0px solid #000000;
+  background-color: #ffaaaa;
 }
 
 .header_logo img{
@@ -165,7 +237,7 @@ header {
   border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
-  border: 0px solid #000000;  
+  border: 0px solid #000000;
   /* Fin bordes redondeados */
 }
 
@@ -203,16 +275,6 @@ header {
 
 /* Bloque ids */
 
-footer {
-  background-color: black;
-  color: white;
-}
-
-footer {
-  order: 4;
-}
-
-
 
 
 /*ordenador pequeño mirar si hay cambios relevantes*/
@@ -237,7 +299,7 @@ footer {
 @media (max-width: 992px){
 <<<<<<< HEAD
 <<<<<<< HEAD
-  
+
 =======
 =======
 >>>>>>> origin/master
@@ -276,6 +338,20 @@ footer {
     padding: 4px 6px;
   }
 
+  #maincontentLista {
+    background-color: #FFFFFF;
+    column-count: 1;
+    column-gap: 6px;
+    padding: 4px 6px;
+  }
+
+  .listadoChats{
+    break-inside: avoid;
+    border:1px solid #ddd;
+    overflow: hidden;
+    width:100%;
+
+  }
 }
 
 @media (max-width: 480px) {
@@ -289,7 +365,7 @@ footer {
     flex-flow: row wrap;
     height: 20%;
     align-items: center;
-    
+
   }
   .b-header{
     color: black;
@@ -314,7 +390,7 @@ footer {
   .header_botones{
 
     margin-left: 10%;
-   
+
   }
 
 
@@ -370,6 +446,9 @@ header {
   column-gap: 6px;
   padding: 4px 6px;
 }
+
+
+
 >>>>>>> origin/master
 
 
