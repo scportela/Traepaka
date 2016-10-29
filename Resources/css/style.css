@@ -182,24 +182,21 @@ footer{
   overflow: hidden;
 }
 
-.imagenListaIzq{
+.imagenListaIzq,.imagenListaDer{
   break-inside: avoid;
   overflow: hidden;
-   height: 100%;
-   width: auto;
-  float: left;
+  height: 100%;
+  width: auto;
   padding-left: 3px;
   padding-right: 3px;
 }
 
+.imagenListaIzq{
+  float: left;
+}
+
 .imagenListaDer{
-  break-inside: avoid;
-  overflow: hidden;
-   height: 100%;
-   width: auto;
   float: right;
-  padding-left: 3px;
-  padding-right: 3px;
 }
 
 .notificacion{
@@ -261,6 +258,10 @@ footer{
   flex-flow: row wrap;
   overflow: auto;
   order:2;
+}
+
+.header_botones{
+  order 3;
 }
 
 .header_busqueda{
