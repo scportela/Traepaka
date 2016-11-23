@@ -114,13 +114,12 @@ footer{
   display: inline-block;
 }
 
-
-
 .articuloContent{
   background: #eee;
   border: 1px solid #ddd;
   padding: 10%;
   border-radius: 3px;
+  display: block;
 
 }
 
