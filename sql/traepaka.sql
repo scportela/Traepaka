@@ -56,4 +56,4 @@ CREATE TABLE `traepaka`.`linea_chat` (
   CONSTRAINT `fk_email_usuario_envia` FOREIGN KEY (`email_usuario_envia`) REFERENCES `traepaka`.`usuario`(`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB;
 
-
+grant all privileges on traepaka.* to traepakauser@localhost identified by "traepakapass";
