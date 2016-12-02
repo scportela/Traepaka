@@ -8,7 +8,7 @@
  $user = $view->getVariable("user");
  $view->setVariable("title", "Registro");
 ?>
-<h1><?= i18n("Registro")?></h1>
+<h1>Registro</h1>
 <form class= "contacto" action="index.php?controller=usuario&amp;action=register" method="POST">
   <div>
     <label>Tu Nombre:</label><input type='text' name="username" value=''>

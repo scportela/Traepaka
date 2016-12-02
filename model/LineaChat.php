@@ -24,6 +24,38 @@
     public function getIdChat(){
       return $id_chat;
     }
-    
+
+    public function getFechaHora(){
+      return $fecha_hora;
+    }
+
+    public function setFechaHora($fecha_hora){
+      $this->fecha_hora=$fecha_hora;
+    }
+
+    public function getMensaje(){
+      return $this->mensaje;
+    }
+
+    public function setMensaje($mensaje){
+      $this->mensaje=$mensaje;
+    }
+
+    public function getLeido(){
+      return $this->leido;
+    }
+
+    public function setLeido($leido){
+      $this->leido=$leido;
+    }
+
+    public function getEmailUsuarioEnvia(){
+      return $this->email_usuario_envia;
+    }
+
+    public function setEmailUsuarioEnvia($email_usuario_envia){
+      $this->email_usuario_envia=$email_usuario_envia;
+    }
+
   }
  ?>
