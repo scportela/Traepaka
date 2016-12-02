@@ -11,6 +11,7 @@ ul.topnav {
     flex-flow: row wrap;
     height: 20%;
     align-items: center;
+
 }
 
 /* Float the list items side by side */
@@ -32,3 +33,10 @@ ul.topnav li a:hover {background-color: #1E90DF;}
 
 /* Hide the list item that contains the link that should open and close the topnav on small screens */
 ul.topnav li.icon {display: none;}
+
+
+.header_usuario{
+  float: right;
+  margin: auto;
+  list-style: none;
+}

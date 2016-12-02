@@ -258,13 +258,24 @@ footer{
   height: 30px;
   width: 100px;
   background-color: #F0F8FF;
-  margin-left: 5%;
+
+}
+.b-login{
+
+  color: black;
+  height: 30px;
+  width: 100px;
+  background-color: #F0F8FF;
+  margin-left: 45%;
   margin-right: 2%;
+  margin-bottom: 17%;
+
+
+
 }
 
 .b-header-busqueda{
-  margin-right: 15%;
-  margin-left: 25%;
+
   flex-basis: 100%;
   height: 100%;
   width: 100%;
@@ -287,11 +298,10 @@ footer{
 
 .header_busqueda{
   width: 50%;
+  margin: auto;
 }
 
-.b-anadir{
-  margin-left: 10%
-}
+
 
 .b-header:hover{
   background-color: #87CEFA ;
