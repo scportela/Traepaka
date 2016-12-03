@@ -21,6 +21,22 @@
         $this->lineaChatMapper = new LineaChatMapper();
       }
 
+      public function crear(){
+        if (!isset($_GET["emailvendedor"] && !isset($_GET["id_articulo"]))) {
+          throw new Exception("emailvendedor & id_articulo is mandatory");
+        }
+
+        $chat = new Chat(NULL,$_GET["id_articulo"],NULL,$_GET["emailvendedor"],$view->getVariable("currentuser"));
+
+        $id = $this->chatMapper->createChat($chat)
+
+        $lineas = new LineaChat($id);
+
+        $this->view->setVariable("lineaChat",$lineas);
+
+        $this->view->render("chat", "chat");
+      }
+
       public function listadoChats() {
 
         $chats = $this->chatMapper->getListForUser($view->getVariable("currentuser"));
@@ -39,13 +55,10 @@
 
         $lineaChat = $this->lineaChatMapper->getListaLineaChat($chatId);
 
-        if ($lineaChat == NULL) {
-          throw new Exception("no such chat with id: ".$chatId);
-        }
 
-        $this->view->setVariable("lineaChat", ($lineaChat==NULL)?new LineaChat():$lineaChat);
+        $this->view->setVariable("lineaChat", ($lineaChat==NULL)?new LineaChat($chatId):$lineaChat);
 
-        $this->view->render("chat", "listadoChats");
+        $this->view->render("chat", "chat");
       }
   }
  ?>
