@@ -59,6 +59,7 @@
 
                  <?php if (isset($currentuser)): ?>
 
+
                    <li class="header_botones ">
                      <img src="img/anadir.png"/>
                    </li>
@@ -67,10 +68,17 @@
                    </li>
                    <li class="header_botones">
                      <button class="b-redondo b-header" type="button" name="button"> Mi perfil</button>
+
                    </li>
                    <li>
                      <i class="about fa fa-question-circle fa-2x" aria-hidden="true"></i>
                    </li>
+                   <div class="logout">
+                     <a href="index.php?controller=usuario&amp;action=logout">Cerrar sesion ! </a>
+                   </div>
+
+
+
                    <li class="icon">
                      <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
                    </li>

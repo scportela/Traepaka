@@ -66,7 +66,7 @@ switch ($evento) {
           if (!empty($_FILES['file']['name'])) {
             for($x=0; $x<count($_FILES["file"]["name"]); $x++){
               //Creamos el objeto de la clase que maneja las imagenes
-	      $up = new imgUpldr;
+	            $up = new imgUpldr;
               $file = $_FILES["file"];
               $var = $nombre;
               $aux=$file["name"][$x];
