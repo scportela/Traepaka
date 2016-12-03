@@ -341,3 +341,19 @@ footer{
   padding: 4px 6px;
   height: 100%;
 }
+
+
+
+a:link,a:visited,a:hover
+{
+ text-decoration:none;
+}
+
+.Dimg{
+  width: 40%;
+}
+
+.test{
+  width: 50%;
+  height: 100%;
+}

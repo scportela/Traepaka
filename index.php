@@ -9,12 +9,12 @@ require_once(__DIR__."/core/PDOConnection.php");
 /**
  * Default controller if any controller is passed in the URL
  */
-define("DEFAULT_CONTROLLER", "usuario");
+define("DEFAULT_CONTROLLER", "producto");
 
 /**
  * Default action if any action is passed in the URL
  */
-define("DEFAULT_ACTION", "login");
+define("DEFAULT_ACTION", "listadoProducto");
 
 /**
  * Main router (single entry-point for all requests)
