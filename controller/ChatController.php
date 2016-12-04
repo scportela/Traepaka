@@ -47,7 +47,6 @@
         $this->view->setVariable("producto",$articulo);
 
         $this->view->setVariable("lineaChat",$lineas);
-
         $this->view->render("chat", "chat");
       }
 

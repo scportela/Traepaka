@@ -20,11 +20,13 @@
         <div class= "descripcion">
           <?php echo $producto->getDescripcion(); ?>
         </div>
-        <button class="btn btn-success btn-block" type="submit" onclick="location.href='index.php?controller=chat&amp;action=crear&amp;emailvendedor=<?php echo $producto->getEmail(); ?>&amp;id_articulo=<?php echo $producto->getId(); ?>'">
+
+        <a href="index.php?controller=chat&amp;action=crear&amp;emailvendedor=<?php echo $producto->getEmail() ?>&amp;id_articulo=<?php echo $producto->getId() ?> ">
+        <button class="btn btn-success btn-block" >
           <i class="fa fa-comment" aria-hidden="true"></i>
            ¡ Iniciar chat !
         </button>
-        </a>
+      </a>
    </div>
  </div>
  <?php } ?>
