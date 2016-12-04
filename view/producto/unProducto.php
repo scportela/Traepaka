@@ -3,7 +3,7 @@
 
  $view = ViewManager::getInstance();
  $errors = $view->getVariable("errors");
- $user = $view->getVariable("user");
+ $user = $view->getVariable("currentuser");
  $productos = $view->getVariable("unProducto");
  $view->setVariable("title", "Registro");
 ?>
@@ -20,6 +20,8 @@
         <div class= "descripcion">
           <?php echo $producto->getDescripcion(); ?>
         </div>
+        <?php
+        if($user->getEmail()!= $producto->getEmail()){ ?>
 
         <a href="index.php?controller=chat&amp;action=crear&amp;emailvendedor=<?php echo $producto->getEmail() ?>&amp;id_articulo=<?php echo $producto->getId() ?> ">
         <button class="btn btn-success btn-block" >
@@ -27,6 +29,8 @@
            ¡ Iniciar chat !
         </button>
       </a>
+      <?php } ?>
+
    </div>
  </div>
  <?php } ?>

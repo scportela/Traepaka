@@ -20,10 +20,14 @@
         <div class= "descripcion">
           <?php echo $producto->getDescripcion(); ?>
         </div>
+        <? if($user->getEmail()!= $producto->getEmail()){ ?>
+
         <button class="btn btn-success btn-block" type="submit">
           <i class="fa fa-comment" aria-hidden="true"></i>
            ¡ Iniciar chat !
         </button>
+        <?php } ?>
+
       </a>
       </div>
    </div>

@@ -2,6 +2,9 @@
   require_once(__DIR__."/../model/Producto.php");
   require_once(__DIR__."/../model/ProductoMapper.php");
 
+  require_once(__DIR__."/../model/Usuario.php");
+  require_once(__DIR__."/../model/UsuarioMapper.php");
+
   require_once(__DIR__."/../core/ViewManager.php");
   require_once(__DIR__."/../controller/BaseController.php");
   require_once(__DIR__."/../Recursos/class_imgUpldr.php");
