@@ -7,7 +7,8 @@
   $view->setVariable("title", "Chat");
   $errors = $view->getVariable("errors");
   $lineas = $view->getVariable("lineaChat");
-  $user = $view->getVariable("currentuser");
+  $chat = $view->getVariable("chat");
+  $producto = $view->getVariable("producto");
 ?>
    <article id="maincontentChat">
 
@@ -29,6 +30,7 @@
         </div>
         <div class="enviar">
           <form>
+            <input type="hidden" id="idchat" value="<?= $chat->getId(); ?>"
             <input type="text" id="texto" placeholder="Enviar..."></input>
             <input type="submit" value="Enviar!">
           </form>
@@ -36,13 +38,13 @@
       </div>
       <div class="producto">
         <div class="imagen">
-          <img class="imageChat" src="../img/play4.jpg">
+          <img class="imageChat" src="<?= $producto->getFoto(); ?>">
         </div>
         <div class= "descripcion">
-         Playstation 4.
+         <?= $producto->getDescripcion(); ?>
         </div>
         <div class= "precio">
-         400€
+         <?= $producto->getPrecio(); ?>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@
     public function getList(){
       $stmt=$this->db->prepare("SELECT * FROM chat");
       $stmt->execute();
-      $chat_db=$stmt->fetch(PDO::FETCH_ASSOC);
+      $chat_db=$stmt->fetchAll(PDO::FETCH_ASSOC);
       $chats = array();
 
   		foreach ($chat_db as $chat) {
@@ -23,11 +23,21 @@
     }
 
     public function getListForUser($email){
-      $stmt=$this->db->prepare("SELECT C.*,L.mensaje AS ultimomensaje, L.fecha_hora AS fechahoraultimomensaje
-                                FROM chat AS C LEFT OUTER JOIN linea_chat AS L
-                                WHERE email_usuario_vendedor=? OR email_usuario_comprador=?");
+      $stmt=$this->db->prepare("SELECT C.*,
+                                L.mensaje AS ultimomensaje,
+                                L.fecha_hora AS fechahoraultimomensaje,
+                                A.titulo as tituloarticulo,
+                                A.descripcion AS descripcionarticulo,
+                                A.precio AS precioarticulo,
+                                A.foto AS fotoarticulo,
+                                A.email_usuario AS emailvendedor,
+                                U.foto as foto
+                                FROM usuario AS U, articulo AS A RIGHT OUTER JOIN chat AS C ON A.id=C.id_articulo
+                                LEFT OUTER JOIN linea_chat AS L ON C.id=L.id_chat
+                                WHERE (C.email_usuario_vendedor=? OR C.email_usuario_comprador=?) AND
+                                      (U.email=C.email_usuario_vendedor OR U.email=C.email_usuario_comprador)");
       $stmt->execute(array($email,$email));
-      $chat_db=$stmt->fetch(PDO::FETCH_ASSOC);
+      $chat_db=$stmt->fetchAll(PDO::FETCH_ASSOC);
       $chats = array();
 
   		foreach ($chat_db as $chat) {
@@ -37,7 +47,14 @@
                                     $chat["email_usuario_vendedor"],
                                     $chat["email_usuario_comprador"],
                                     $chat["ultimomensaje"],
-                                    $chat["fechahoraultimomensaje"]));
+                                    $chat["fechahoraultimomensaje"]),
+                                    new Producto($chat["id_articulo"],
+                                                 $chat["emailvendedor"],
+                                                 $chat["descripcionarticulo"],
+                                                 $chat["tituloarticulo"],
+                                                 $chat["fotoarticulo"],
+                                                 $chat["precioarticulo"]),
+                                    $chat["foto"]);
   		}
 
       return $chats;
@@ -94,7 +111,7 @@
 
     public function createChat(Chat $chat){
       $stmt=$this->db->prepare("INSERT INTO chat(id_articulo,fecha_hora,email_usuario_vendedor,email_usuario_comprador) VALUES(?,NOW(),?,?)");
-      $stmt->execute(array($chat->getIdArticulo(),$chat->getFechaHora(),$chat->getEmailUsuarioVendedor(),$chat->getEmailUsuarioComprador()));
+      $stmt->execute(array($chat->getIdArticulo(),$chat->getEmailUsuarioVendedor(),$chat->getEmailUsuarioComprador()));
       return $this->db->lastInsertId();
     }
 

@@ -70,4 +70,18 @@ class UsuarioMapper {
 			return 1;
 		}
 	}
+
+	public function getUsuarioByEmail($email){
+		$stmt = $this->db->prepare("SELECT * FROM usuario where email=?");
+		$stmt->execute(array($email));
+		$res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+		if($res!=NULL){
+			return new Usuario($res["email"],$res["password"],$res["nombre"],$res["email"]);
+		}else{
+			return NULL;
+		}
+
+	}
 }
