@@ -20,8 +20,7 @@
         <div class= "descripcion">
           <?php echo $producto->getDescripcion(); ?>
         </div>
-        <a href="index.php?controller=chat&amp;action=">
-        <button class="btn btn-success btn-block" type="submit">
+        <button class="btn btn-success btn-block" type="submit" onclick="location.href='index.php?controller=chat&amp;action=crear&amp;emailvendedor=<?php echo $producto->getEmail(); ?>&amp;id_articulo=<?php echo $producto->getId(); ?>'">
           <i class="fa fa-comment" aria-hidden="true"></i>
            ¡ Iniciar chat !
         </button>

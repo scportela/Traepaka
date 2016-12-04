@@ -45,30 +45,29 @@
 
 
         <ul class="topnav" id="myTopnav">
-           <li class="header_logo"><img src="img/logo.png"/></li>
+           <li class="header_logo"><a href="index.php?controller=producto&amp;action=listadoProducto"><img src="img/logo.png"/></a></li>
 
            <li class="header_busqueda">
-             <form class="b-header-busqueda">
-               <input class="b-redondo b-header-busqueda" placeholder="Busca tu producto..." type="text">
+             <form class="b-header-busqueda" action="index.php?controller=producto&amp;action=busquedaTitulo" method="POST">
+               <input class="b-redondo b-header-busqueda" placeholder="Busca tu producto..." type="text" name="cadena">
+               <input type="submit" class="b-redondo" value="Buscar">
              </form>
            </li>
 
 
 
                <ul class="header_usuario">
-
                  <?php if (isset($currentuser)): ?>
-
-
                    <li class="header_botones ">
-                     <img src="img/anadir.png"/>
+                     <a href="index.php?controller=producto&amp;action=nuevoProducto"><img src="img/anadir.png"/></a>
                    </li>
                    <li class="header_botones">
                      <button class="b-redondo b-header" type="button" name="button"> Chat </button>
                    </li>
                    <li class="header_botones">
-                     <button class="b-redondo b-header" type="button" name="button"> Mi perfil</button>
-
+                     <?php $email=$currentuser->getEmail(); ?>
+                     <button class="b-redondo b-header" type="button" name="button"
+                     onclick=" location.href='index.php?controller=producto&amp;action=listadoMisProductos&amp;user=<?php echo $email; ?>' "> Mis Productos</button>
                    </li>
                    <li>
                      <i class="about fa fa-question-circle fa-2x" aria-hidden="true"></i>
