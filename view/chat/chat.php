@@ -6,7 +6,7 @@
   $view = ViewManager::getInstance();
   $view->setVariable("title", "Chat");
   $errors = $view->getVariable("errors");
-  $lineas = $view->getVariable("lineaChat")
+  $lineas = $view->getVariable("lineaChat");
   $user = $view->getVariable("currentuser");
 ?>
    <article id="maincontentChat">

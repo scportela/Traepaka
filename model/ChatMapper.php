@@ -94,7 +94,7 @@
 
     public function createChat(Chat $chat){
       $stmt=$this->db->prepare("INSERT INTO chat(id_articulo,fecha_hora,email_usuario_vendedor,email_usuario_comprador) VALUES(?,NOW(),?,?)");
-      $stmt->execute(array($chat->getIdArticulo,$chat->getFechaHora,$chat->getEmailUsuarioVendedor,$chat->getEmailUsuarioComprador));
+      $stmt->execute(array($chat->getIdArticulo(),$chat->getFechaHora(),$chat->getEmailUsuarioVendedor(),$chat->getEmailUsuarioComprador()));
       return $this->db->lastInsertId();
     }
 
