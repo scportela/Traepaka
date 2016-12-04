@@ -5,8 +5,9 @@ require_once(__DIR__."/../core/ViewManager.php");
 
 require_once(__DIR__."/../model/Usuario.php");
 require_once(__DIR__."/../model/UsuarioMapper.php");
-
+require_once (__DIR__."/../Recursos/class_imgUpldr.php");
 require_once(__DIR__."/../controller/BaseController.php");
+
 
 
 /**
@@ -25,10 +26,12 @@ class UsuarioController extends BaseController {
    */
   private $usuarioMapper;
 
+
   public function __construct() {
     parent::__construct();
 
     $this->usuarioMapper = new UsuarioMapper();
+
 
     // Users controller operates in a "welcome" layout
     // different to the "default" layout where the internal
@@ -71,7 +74,7 @@ class UsuarioController extends BaseController {
       if ($this->usuarioMapper->isValidUser($_POST["passwd"], $_POST["email"])==1) {
 
 	$_SESSION["currentuser"]= $_POST["email"];
-  
+
 
 	$this->view->redirect("usuario", "register");
 
@@ -122,40 +125,26 @@ class UsuarioController extends BaseController {
       // populate the User object with data form the form
       $user->setNombre($_POST["username"]);
       $user->setPassword($_POST["passwd"]);
-      $user->setFoto("foto");
       $user->setEmail($_POST["email"]);
 
-      try{
-	//$user->checkIsValidForRegister(); // if it fails, ValidationException
+      $foto=($_FILES["foto"]);
+      $subir= new imgUpldr();
 
-	// check if user exists in the database
-	//if (!$this->usuarioMapper->usernameExists($_POST["username"])){
+      $randomString=$this->generateRandomString(15);
 
-	  // save the User object into the database
-	  $this->usuarioMapper->save($user);
+      $ruta = "img/Usuarios/$randomString";
+      $subir->_dest= "img/Productos/";
+      $subir->_name= "$randomString";
+      $subir->init($foto);
+      $user->setFoto($ruta);
 
-	  // POST-REDIRECT-GET
-	  // Everything OK, we will redirect the user to the list of posts
-	  // We want to see a message after redirection, so we establish
-	  // a "flash" message (which is simply a Session variable) to be
-	  // get in the view after redirection.
+
+	    $this->usuarioMapper->save($user);
+
+
 	  $this->view->setFlash("Username ".$user->getNombre()." successfully added. Please login now");
 
-	  // perform the redirection. More or less:
-	  // header("Location: index.php?controller=users&action=login")
-	  // die();
-	  $this->view->redirect("usuario", "login");
-	//} else {
-	//  $errors = array();
-	//  $errors["username"] = "Username already exists";
-	//  $this->view->setVariable("errors", $errors);
-//	}
-      }catch(ValidationException $ex) {
-	// Get the errors array inside the exepction...
-	$errors = $ex->getErrors();
-	// And put it to the view as "errors" variable
-	$this->view->setVariable("errors", $errors);
-      }
+
     }
 
     // Put the User object visible to the view
@@ -165,6 +154,9 @@ class UsuarioController extends BaseController {
     $this->view->render("usuario", "register");
 
   }
+  function generateRandomString($length) {
+          return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+      }
 
  /**
    * Action to logout
