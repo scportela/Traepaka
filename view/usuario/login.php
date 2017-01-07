@@ -19,14 +19,14 @@ $errors = $view->getVariable("errors");
         <label>Tu Email:</label><input type='text' name="email" value=''>
       </div>
       <div>
-        <label>Contraseña</label><input type='password' name="passwd" value=''>
+        <label><?= i18n("Password")?></label><input type='password' name="passwd" value=''>
       </div>
-      	<input type="submit" value="Login">
+      	<input type="submit" value="<?= i18n("Login") ?>">
       </div>
     </form>
 
 </div>
-<p>¿No estas registrado?  <a href="index.php?controller=usuario&amp;action=register"> Registrarse </a></p>
+<p><?= i18n("Not user?")?> <a href="index.php?controller=usuario&amp;action=register"> <?= i18n("Register here!")?> </a></p>
 <?php $view->moveToFragment("css");?>
 <link rel="stylesheet" src="css/style2.css">
 <?php $view->moveToDefaultFragment(); ?>

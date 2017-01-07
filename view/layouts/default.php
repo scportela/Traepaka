@@ -73,7 +73,7 @@
                      <i class="about fa fa-question-circle fa-2x" aria-hidden="true"></i>
                    </li>
                    <div class="logout">
-                     <a href="index.php?controller=usuario&amp;action=logout">Cerrar sesion ! </a>
+                     <a href="index.php?controller=usuario&amp;action=logout"> Cerrar sesion ! </a>
                    </div>
 
 
@@ -86,7 +86,7 @@
 
                 <form action="index.php?controller=usuario&amp;action=login" method="POST">
                   <li class="header_botones">
-                    <button class="b-redondo b-login" name="button">Login!</button>
+                    <button class="b-redondo b-login" name="button"><?= i18n("Login") ?></button>
                   </li>
                 </form>
                 <?php endif ?>
@@ -107,11 +107,11 @@
       <?= $view->getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
     </main>
 
-    <!--<footer>
+    <footer>
       <?php
       include(__DIR__."/language_select_element.php");
       ?>
-    </footer>-->
+    </footer>
 
   </body>
 </html>

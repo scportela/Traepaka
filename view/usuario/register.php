@@ -8,20 +8,20 @@
  $user = $view->getVariable("user");
  $view->setVariable("title", "Registro");
 ?>
-<h1>Registro</h1>
+<h1><?= i18n("Register")?></h1>
 <form class= "contacto" action="index.php?controller=usuario&amp;action=register" method="POST">
   <div>
-    <label>Tu Nombre:</label><input type='text' name="username" value=''>
+    <label><?= i18n("Username")?>:</label><input type='text' name="username" value=''>
   </div>
   <div>
-    <label>Tu Email:</label><input type='text' name="email" value=''>
+    <label>Email:</label><input type='text' name="email" value=''>
   </div>
   <div>
-    <label>Contraseña</label><input type='password'name="passwd" value=''>
+    <label><?= i18n("Password")?>:</label><input type='password'name="passwd" value=''>
   </div>
   <div>
     <label>Foto</label><input type='file' value=''>
   </div>
-    <input type="submit" value="Registro">
+    <input type="submit" value="<?= i18n("Register")?>">
   </div>
 </form>
