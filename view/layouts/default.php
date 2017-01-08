@@ -49,8 +49,8 @@
 
            <li class="header_busqueda">
              <form class="b-header-busqueda" action="index.php?controller=producto&amp;action=busquedaTitulo" method="POST">
-               <input class="b-redondo b-header-busqueda" placeholder="Busca tu producto..." type="text" name="cadena">
-               <input type="submit" class="b-redondo" value="Buscar">
+               <input class="b-redondo b-header-busqueda" placeholder="<?= i18n("Find items...") ?>" type="text" name="cadena">
+               <input type="submit" class="b-redondo" value="<?= i18n("Search") ?>">
              </form>
            </li>
 
@@ -67,13 +67,13 @@
                    <li class="header_botones">
                      <?php $email=$currentuser->getEmail(); ?>
                      <button class="b-redondo b-header" type="button" name="button"
-                     onclick=" location.href='index.php?controller=producto&amp;action=listadoMisProductos&amp;user=<?php echo $email; ?>' "> Mis Productos</button>
+                     onclick=" location.href='index.php?controller=producto&amp;action=listadoMisProductos&amp;user=<?php echo $email; ?>' "> <?= i18n("My Profile") ?></button>
                    </li>
                    <li>
                      <i class="about fa fa-question-circle fa-2x" aria-hidden="true"></i>
                    </li>
                    <div class="logout">
-                     <a href="index.php?controller=usuario&amp;action=logout"> Cerrar sesion ! </a>
+                     <a href="index.php?controller=usuario&amp;action=logout"> <?= i18n("Logout") ?></a>
                    </div>
 
 

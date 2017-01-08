@@ -2,6 +2,8 @@
  //file: view/users/register.php
 //CAMBIAR COSAS Y AÑADIR LAS CLASES PARA MOSTRAR EL FORMULARIO BONITO
  require_once(__DIR__."/../../core/ViewManager.php");
+ require_once(__DIR__ . "/../../core/I18n.php");
+
 
  $view = ViewManager::getInstance();
  $errors = $view->getVariable("errors");
@@ -20,7 +22,7 @@
     <label><?= i18n("Password")?>:</label><input type='password'name="passwd" value=''>
   </div>
   <div>
-    <label>Foto</label><input type='file' value=''>
+    <label><?= i18n("Photo")?>:</label><input type='file' value=''>
   </div>
     <input type="submit" value="<?= i18n("Register")?>">
   </div>
