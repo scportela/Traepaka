@@ -11,8 +11,8 @@
 
     public function getListaLineaChat($id_chat){
       $stmt = $this->db->prepare("SELECT * FROM linea_chat WHERE id_chat=?");
-      $stmt->execute(array($id));
-      $linea_db=$stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute(array($id_chat));
+        $linea_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
       $lineas = array();
 
   		foreach ($linea_db as $linea) {

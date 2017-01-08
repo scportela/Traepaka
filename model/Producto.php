@@ -11,7 +11,8 @@ class Producto {
 	private $email_user;
 
 	public function __construct($id=NULL, $email=NULL, $descripcion=NULL, $titulo=NULL, $foto=NULL, $precio=NULL) {
-    $this->id=$id;
+
+        $this->id=$id;
 		$this->titulo = $titulo;
 		$this->descripcion = $descripcion;
 		$this->foto = $foto;

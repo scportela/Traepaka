@@ -47,14 +47,14 @@
                                     $chat["email_usuario_vendedor"],
                                     $chat["email_usuario_comprador"],
                                     $chat["ultimomensaje"],
-                                    $chat["fechahoraultimomensaje"]),
+                $chat["fechahoraultimomensaje"],
                                     new Producto($chat["id_articulo"],
                                                  $chat["emailvendedor"],
                                                  $chat["descripcionarticulo"],
                                                  $chat["tituloarticulo"],
                                                  $chat["fotoarticulo"],
                                                  $chat["precioarticulo"]),
-                                    $chat["foto"]);
+                $chat["foto"]));
   		}
 
       return $chats;

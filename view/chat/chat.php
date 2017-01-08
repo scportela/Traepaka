@@ -15,39 +15,37 @@
     <div class="chat">
       <div class="conversacion">
         <div class="mensajes">
-          <?php foreach($lineas as $linea){ ?>
-            <?php if($user==$linea->getEmailUsuarioEnvia()){ ?>
+            <?php foreach ($lineas as $linea): ?>
+                <?php if ($user->getEmail() == $linea->getEmailUsuarioEnvia()): ?>
               <div class="mensajeEnviado">
-                <p><?php echo $linea->getMensaje(); ?></p>
+                  <p><?= $linea->getMensaje(); ?></p>
               </div>
-            <?php }else{ ?>
+                <?php else: ?>
               <div class="mensajeRecibido">
-                <p><?php echo $linea->getMensaje(); ?></p>
+                  <p><?= $linea->getMensaje(); ?></p>
               </div>
-            <?php } ?>
-          <?php } ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </div>
         <div class="enviar">
           <form>
-            <input type="hidden" id="idchat" value="<?php echo $chat->getId(); ?>"/>
+              <input type="hidden" id="idchat" value="<?= $chat->getId(); ?>"/>
             <input type="text" id="texto" placeholder="Enviar..."></input>
             <input type="submit" value="Enviar!">
           </form>
         </div>
       </div>
-      <?php foreach($producto as $productos){ ?>
       <div class="producto">
         <div class="imagen">
-          <img class="imageChat" src="<?php echo $productos->getFoto(); ?>">
+            <img class="imageChat" src="<?= $producto[0]->getFoto(); ?>">
         </div>
         <div class= "descripcion">
-         <?php echo $productos->getDescripcion(); ?>
+            <?= $producto[0]->getDescripcion(); ?>
         </div>
         <div class= "precio">
-         <?php echo $productos->getPrecio(); ?>
+            <?= $producto[0]->getPrecio(); ?>
         </div>
       </div>
-      <?php } ?>
 
     </div>
    </article>

@@ -11,7 +11,13 @@
     private $fotousuario;
     private $producto;
 
-    public function __construct($id=NULL,$id_articulo=NULL,$fecha_hora=NULL,$email_usuario_vendedor=NULL,$email_usuario_comprador=NULL,$ultimomensaje=NULL,$fechahoraultimomensaje=NULL,$producto=NULL,$foto=NULL){
+      public function __construct($id = NULL, $id_articulo = NULL, $fecha_hora = NULL,
+                                  $email_usuario_vendedor = NULL, $email_usuario_comprador = NULL,
+                                  $ultimomensaje = NULL, $fechahoraultimomensaje = NULL,
+                                  $producto = NULL, $foto = NULL)
+      {
+
+
       $this->id=$id;
       $this->id_articulo=$id_articulo;
       $this->fecha_hora=$fecha_hora;
@@ -19,7 +25,9 @@
       $this->email_usuario_comprador=$email_usuario_comprador;
       $this->ultimomensaje=$ultimomensaje;
       $this->fechahoraultimomensaje=$fechahoraultimomensaje;
-      $this->producto = $producto;
+
+
+          $this->producto = $producto;
       $this->fotousuario=$foto;
     }
 
@@ -36,7 +44,7 @@
     }
 
     public function setIdArticulo($idArticulo){
-      $this->id_articulo=$id_articulo;
+        $this->id_articulo = $idArticulo;
     }
 
     public function getFechaHora(){
@@ -80,7 +88,8 @@
     }
 
     public function getProducto(){
-      return $this->producto;
+
+        return $this->producto;
     }
 
     public function setProducto($producto){

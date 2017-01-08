@@ -53,7 +53,7 @@
       public function listadoChats() {
 
         $chats = $this->chatMapper->getListForUser($this->view->getVariable("currentuser")->getEmail());
-
+          //  var_dump($chats);
         $this->view->setVariable("chat", $chats);
 
         $this->view->render("chat", "listadoChats");
