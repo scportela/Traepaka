@@ -1,7 +1,8 @@
 <?php
   //file: view/users/login.php
-  //AQUI HABRA QUE TOCAR PARA QUE EL USUARIO META TB EL EMAIL?
   require_once(__DIR__."/../../core/ViewManager.php");
+  require_once(__DIR__ . "/../../core/I18n.php");
+
   $view = ViewManager::getInstance();
   $view->setVariable("title", "listadoChats");
   $errors = $view->getVariable("errors");
@@ -29,7 +30,7 @@
                  <p><?php echo  $chat->getFechaHoraUltimoMensaje(); ?></p>
                </div>
                <div class="opcionesChat">
-                 <button class="b-redondo b-borrar" type="button" name="button"> Borrar Chat </button>
+                 <button class="b-redondo b-borrar" type="button" name="button"> <?= i18n("Delete Chat") ?></button>
                </div>
              </div>
              <div class="imagenListaDer">
@@ -54,7 +55,7 @@
                </div>
 
                  <div class="opcionesChat">
-                 <button class="b-redondo b-borrar" type="button" name="button"> Borrar Chat </button>
+                 <button class="b-redondo b-borrar" type="button" name="button"><?= i18n("Delete Chat") ?> </button>
                </div>
              </div>
            <?php endif; ?>

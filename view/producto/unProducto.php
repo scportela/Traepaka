@@ -1,5 +1,7 @@
 <?php
  require_once(__DIR__."/../../core/ViewManager.php");
+ require_once(__DIR__ . "/../../core/I18n.php");
+
 
  $view = ViewManager::getInstance();
  $errors = $view->getVariable("errors");
@@ -26,7 +28,7 @@
         <a href="index.php?controller=chat&amp;action=crear&amp;emailvendedor=<?php echo $producto->getEmail() ?>&amp;id_articulo=<?php echo $producto->getId() ?> ">
         <button class="btn btn-success btn-block" >
           <i class="fa fa-comment" aria-hidden="true"></i>
-           ¡ Iniciar chat !
+           <?= i18n("Chat !") ?>
         </button>
       </a>
       <?php } ?>

@@ -1,6 +1,7 @@
 <?php
   //file: view/users/login.php
   require_once(__DIR__."/../../core/ViewManager.php");
+require_once(__DIR__ . "/../../core/I18n.php");
 
   $view = ViewManager::getInstance();
   $view->setVariable("title", "Chat");
@@ -30,8 +31,8 @@
         <div class="enviar">
           <form>
               <input type="hidden" id="idchat" value="<?= $chat->getId(); ?>"/>
-            <input type="text" id="texto" placeholder="Enviar..."></input>
-            <input type="submit" value="Enviar!">
+            <input type="text" id="texto" placeholder="<?= i18n("Send your message...") ?>"></input>
+            <input type="submit" value="<?= i18n("Send!") ?>!">
           </form>
         </div>
       </div>
