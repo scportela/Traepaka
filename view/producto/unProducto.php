@@ -20,7 +20,8 @@
         <div class= "descripcion">
           <?php echo $producto->getDescripcion(); ?>
         </div>
-        <?php
+        <?php if ($user != NULL):
+
         if($user->getEmail()!= $producto->getEmail()){ ?>
 
         <a href="index.php?controller=chat&amp;action=crear&amp;emailvendedor=<?php echo $producto->getEmail() ?>&amp;id_articulo=<?php echo $producto->getId() ?> ">
@@ -29,7 +30,8 @@
            ¡ Iniciar chat !
         </button>
       </a>
-      <?php } ?>
+        <?php }
+        endif; ?>
 
    </div>
  </div>

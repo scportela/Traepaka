@@ -4,6 +4,7 @@ ini_set('display_errors', '1');
 ?>
 <?php
 require_once(__DIR__."/core/PDOConnection.php");
+require_once(__DIR__ . "/core/I18n.php");
 // file: index.php
 
 /**

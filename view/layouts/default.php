@@ -2,7 +2,6 @@
  //file: view/layouts/default.php
  ini_set("display_errors",1);
  require_once(__DIR__."/../../core/ViewManager.php");
-require_once(__DIR__ . "/../../core/I18n.php");
  $view = ViewManager::getInstance();
  $currentuser = $view->getVariable("currentuser");
 
