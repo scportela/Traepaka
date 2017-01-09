@@ -16,7 +16,7 @@
       $chats = array();
 
   		foreach ($chat_db as $chat) {
-  			array_push($chats, new Chat($chat["id"], $chat["id_articulo"], $chat["fecha_hora"], $chat["email_usuario_vendedor"], $chat["email_usuario_comprador"]));
+            array_push($chats, new Chat($chat["id"], $chat["id_articulo"], $chat["fecha_hora"], $chat["email_usuario_comprador"]));
   		}
 
       return $chats;
@@ -34,8 +34,8 @@
                                 U.foto as foto
                                 FROM usuario AS U, articulo AS A RIGHT OUTER JOIN chat AS C ON A.id=C.id_articulo
                                 LEFT OUTER JOIN linea_chat AS L ON C.id=L.id_chat
-                                WHERE (C.email_usuario_vendedor=? OR C.email_usuario_comprador=?) AND
-                                      (U.email=C.email_usuario_vendedor OR U.email=C.email_usuario_comprador)");
+                                WHERE (A.email_usuario_vendedor=? OR C.email_usuario_comprador=?) AND
+                                      (U.email=emailvendedor OR U.email=C.email_usuario_comprador)");
       $stmt->execute(array($email,$email));
       $chat_db=$stmt->fetchAll(PDO::FETCH_ASSOC);
       $chats = array();
@@ -44,7 +44,7 @@
   			array_push($chats, new Chat($chat["id"],
                                     $chat["id_articulo"],
                                     $chat["fecha_hora"],
-                                    $chat["email_usuario_vendedor"],
+                $chat["emailvendedor"],
                                     $chat["email_usuario_comprador"],
                                     $chat["ultimomensaje"],
                 $chat["fechahoraultimomensaje"],
@@ -66,7 +66,7 @@
       $chat=$stmt->fetch(PDO::FETCH_ASSOC);
 
       if($chat!=NULL){
-        return new Chat($chat["id"],$chat["id_articulo"],$chat["fecha_hora"],$chat["email_usuario_vendedor"],$chat["email_usuario_comprador"]);
+          return new Chat($chat["id"], $chat["id_articulo"], $chat["fecha_hora"], NULL, $chat["email_usuario_comprador"]);
       }else{
         return NULL;
       }
@@ -110,8 +110,8 @@
     // }
 
     public function createChat(Chat $chat){
-      $stmt=$this->db->prepare("INSERT INTO chat(id_articulo,fecha_hora,email_usuario_vendedor,email_usuario_comprador) VALUES(?,NOW(),?,?)");
-      $stmt->execute(array($chat->getIdArticulo(),$chat->getEmailUsuarioVendedor(),$chat->getEmailUsuarioComprador()));
+        $stmt = $this->db->prepare("INSERT INTO chat(id_articulo,fecha_hora,email_usuario_comprador) VALUES(?,NOW(),?)");
+        $stmt->execute(array($chat->getIdArticulo(), $chat->getEmailUsuarioComprador()));
       return $this->db->lastInsertId();
     }
 

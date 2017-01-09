@@ -36,11 +36,9 @@ CREATE TABLE `traepaka`.`chat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_articulo` int(11) NOT NULL,
   `fecha_hora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `email_usuario_vendedor` varchar(100) NOT NULL,
   `email_usuario_comprador` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_id_articulo` FOREIGN KEY (`id_articulo`) REFERENCES `traepaka`.`articulo`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_email_usuario_vendedor` FOREIGN KEY (`email_usuario_vendedor`) REFERENCES `traepaka`.`usuario`(`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_email_usuario_comprador` FOREIGN KEY (`email_usuario_comprador`) REFERENCES `traepaka`.`usuario`(`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=INNODB;
 
@@ -52,10 +50,9 @@ CREATE TABLE `traepaka`.`linea_chat` (
   `fecha_hora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `mensaje` varchar(1000) NOT NULL,
   `leido` tinyint(1) NOT NULL DEFAULT 0,
-  `email_usuario_envia` varchar(100) NOT NULL,
+  `enviado_comprador` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_chat`,`id`),
-  FOREIGN KEY (`id_chat`) REFERENCES chat(`id`),
-  CONSTRAINT `fk_email_usuario_envia` FOREIGN KEY (`email_usuario_envia`) REFERENCES `traepaka`.`usuario`(`email`) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (`id_chat`) REFERENCES chat(`id`)
 ) ENGINE=INNODB;
 
 grant all privileges on traepaka.* to traepakauser@localhost identified by "traepakapass";
