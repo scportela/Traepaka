@@ -133,7 +133,7 @@ class UsuarioController extends BaseController {
       $randomString=$this->generateRandomString(15);
 
       $ruta = "img/Usuarios/$randomString";
-      $subir->_dest= "img/Productos/";
+      $subir->_dest= "img/Usuarios/";
       $subir->_name= "$randomString";
       $subir->init($foto);
       $user->setFoto($ruta);

@@ -11,7 +11,7 @@
  $view->setVariable("title", "Registro");
 ?>
 <h1><?= i18n("Register")?></h1>
-<form class= "contacto" action="index.php?controller=usuario&amp;action=register" method="POST">
+<form class= "contacto" enctype="multipart/form-data" action="index.php?controller=usuario&amp;action=register" method="POST">
   <div>
     <label><?= i18n("Username")?>:</label><input type='text' name="username" value=''>
   </div>
@@ -22,7 +22,7 @@
     <label><?= i18n("Password")?>:</label><input type='password'name="passwd" value=''>
   </div>
   <div>
-    <label><?= i18n("Photo")?>:</label><input type='file' value=''>
+    <label><?= i18n("Photo")?>:</label><input type='file' name="foto" value=''>
   </div>
     <input type="submit" value="<?= i18n("Register")?>">
   </div>
