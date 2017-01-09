@@ -31,7 +31,7 @@
       }
 
       public function listadoMisProductos(){
-        $email = $_GET["user"];
+        $email = $_POST["email"];
         $productos = $this->productoMapper->getMisProductos($email);
         $this->view->setVariable("producto", $productos);
         $this->view->render("producto", "listadoProducto");

@@ -76,7 +76,7 @@ class UsuarioController extends BaseController {
 	$_SESSION["currentuser"]= $_POST["email"];
 
 
-	$this->view->redirect("usuario", "register");
+	$this->view->redirect("producto", "listadoProducto");
 
       }else{
 	$errors = array();
@@ -151,7 +151,7 @@ class UsuarioController extends BaseController {
     $this->view->setVariable("user", $user);
 
     // render the view (/view/users/register.php)
-    $this->view->render("usuario", "register");
+    $this->view->render("producto", "listadoProducto");
 
   }
   function generateRandomString($length) {

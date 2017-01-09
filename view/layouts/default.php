@@ -66,8 +66,11 @@
                    </li>
                    <li class="header_botones">
                      <?php $email=$currentuser->getEmail(); ?>
-                     <button class="b-redondo b-header" type="button" name="button"
-                     onclick=" location.href='index.php?controller=producto&amp;action=listadoMisProductos&amp;user=<?php echo $email; ?>' "> <?= i18n("My Profile") ?></button>
+                     <form action="index.php?controller=producto&amp;action=listadoMisProductos" method="POST">
+                       <input type="hidden" name="email" value="<?php echo $email; ?>">
+
+                       <button class="b-redondo b-header" type="submit" name="button"> <?= i18n("My Profile") ?></button>
+                     <form>
                    </li>
                    <li>
                      <i class="about fa fa-question-circle fa-2x" aria-hidden="true"></i>
