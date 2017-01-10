@@ -151,7 +151,7 @@ class UsuarioController extends BaseController {
     $this->view->setVariable("user", $user);
 
     // render the view (/view/users/register.php)
-    $this->view->render("producto", "listadoProducto");
+      $this->view->redirect("usuario", "register");
 
   }
   function generateRandomString($length) {

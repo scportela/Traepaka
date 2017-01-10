@@ -6,27 +6,28 @@
     private $fecha_hora;
     private $mensaje;
     private $leido;
-    private $email_usuario_envia;
+      private $enviado_comprador;
 
-    public function __construct($id_chat=NULL,$id=NULL,$fecha_hora=NULL,$mensaje=NULL,$leido=NULL,$email_usuario_envia=NULL){
+      public function __construct($id_chat = NULL, $id = NULL, $fecha_hora = NULL, $mensaje = NULL, $leido = NULL, $enviado_comprador = NULL)
+      {
       $this->id_chat=$id_chat;
       $this->id=$id;
       $this->fecha_hora=$fecha_hora;
       $this->mensaje=$mensaje;
       $this->leido=$leido;
-      $this->email_usuario_envia=$email_usuario_envia;
+          $this->enviado_comprador = $enviado_comprador;
     }
 
     public function getId(){
-      return $id;
+        return $this->id;
     }
 
     public function getIdChat(){
-      return $id_chat;
+        return $this->id_chat;
     }
 
     public function getFechaHora(){
-      return $fecha_hora;
+        return $this->fecha_hora;
     }
 
     public function setFechaHora($fecha_hora){
@@ -49,12 +50,14 @@
       $this->leido=$leido;
     }
 
-    public function getEmailUsuarioEnvia(){
-      return $this->email_usuario_envia;
+      public function getEnviadoComprador()
+      {
+          return $this->enviado_comprador;
     }
 
-    public function setEmailUsuarioEnvia($email_usuario_envia){
-      $this->email_usuario_envia=$email_usuario_envia;
+      public function setEnviadoComprador($enviado_comprador)
+      {
+          $this->enviado_comprador = $enviado_comprador;
     }
 
   }

@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors", 1);
   //file: view/users/login.php
   require_once(__DIR__."/../../core/ViewManager.php");
 require_once(__DIR__ . "/../../core/I18n.php");
@@ -16,8 +17,11 @@ require_once(__DIR__ . "/../../core/I18n.php");
     <div class="chat">
       <div class="conversacion">
         <div class="mensajes">
-            <?php foreach ($lineas as $linea): ?>
-                <?php if ($user->getEmail() == $linea->getEmailUsuarioEnvia()): ?>
+            <?php
+            foreach ($lineas as $linea):
+                if (($user->getEmail() == $chat->getEmailUsuarioComprador() && $linea->getEnviadoComprador() == "1")
+                    || ($user->getEmail() != $chat->getEmailUsuarioComprador() && $linea->getEnviadoComprador() == "0")
+                ): ?>
               <div class="mensajeEnviado">
                   <p><?= $linea->getMensaje(); ?></p>
               </div>
@@ -25,26 +29,26 @@ require_once(__DIR__ . "/../../core/I18n.php");
               <div class="mensajeRecibido">
                   <p><?= $linea->getMensaje(); ?></p>
               </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
+                <?php endif;
+            endforeach; ?>
         </div>
         <div class="enviar">
-          <form>
-              <input type="hidden" id="idchat" value="<?= $chat->getId(); ?>"/>
-            <input type="text" id="texto" placeholder="<?= i18n("Send your message...") ?>"></input>
+            <form action="index.php?controller=chat&amp;action=enviarMensaje" method="POST">
+                <input type="hidden" name="idchat" value="<?= $chat->getId(); ?>"/>
+                <input type="text" name="mensaje" placeholder="<?= i18n("Send your message...") ?>"></input>
             <input type="submit" value="<?= i18n("Send!") ?>!">
           </form>
         </div>
       </div>
       <div class="producto">
         <div class="imagen">
-            <img class="imageChat" src="<?= $producto[0]->getFoto(); ?>">
+            <img class="imageChat" src="<?= $chat->getProducto()->getFoto(); ?>">
         </div>
         <div class= "descripcion">
-            <?= $producto[0]->getDescripcion(); ?>
+            <?= $chat->getProducto()->getDescripcion(); ?>
         </div>
         <div class= "precio">
-            <?= $producto[0]->getPrecio(); ?>
+            <?= $chat->getProducto()->getPrecio(); ?>
         </div>
       </div>
 

@@ -47,7 +47,7 @@
         $this->view->setVariable("producto",$articulo);
 
         $this->view->setVariable("lineaChat",$lineas);
-        $this->view->render("chat", "chat");
+          $this->view->redirect("chat", "chat", "id=" . $id);
       }
 
       public function listadoChats() {
@@ -59,14 +59,31 @@
         $this->view->render("chat", "listadoChats");
       }
 
-      public function chat(){
-        if (!isset($_GET["id"])) {
-          throw new Exception("id is mandatory");
-        }
+      public function chat()
+      {
+          if (!isset($_GET["id"])) {
+              throw new Exception("id is mandatory");
+          }
 
-        $chatId = $_GET["id"];
+          $chatId = $_GET["id"];
+          $comprobarchat = $this->chatMapper->getChatById($chatId);
 
-        $lineaChat = $this->lineaChatMapper->getListaLineaChat($chatId);
+          if (($this->view->getVariable("currentuser")->getEmail() != $comprobarchat->getEmailUsuarioVendedor()) &&
+              ($this->view->getVariable("currentuser")->getEmail() != $comprobarchat->getEmailUsuarioComprador())
+          ) {
+              $this->view->redirect("chat", "listadoChats");
+          }
+
+          $lineaChat = $this->lineaChatMapper->getListaLineaChat($chatId);
+
+          foreach ($lineaChat as $linea) {
+
+              if (($this->view->getVariable("currentuser")->getEmail() == $comprobarchat->getEmailUsuarioVendedor() && $linea->getEnviadoComprador() == "1")
+                  || ($this->view->getVariable("currentuser")->getEmail() == $comprobarchat->getEmailUsuarioComprador() && $linea->getEnviadoComprador() == "0")
+              ) {
+                  $this->lineaChatMapper->marcarLineaComoLeida($linea->getIdChat(), $linea->getId());
+              }
+          }
 
         $chat=$this->chatMapper->getChatById($chatId);
         $this->view->setVariable("chat",$chat);
@@ -74,6 +91,33 @@
         $this->view->setVariable("lineaChat", ($lineaChat==NULL)?new LineaChat($chatId):$lineaChat);
 
         $this->view->render("chat", "chat");
+      }
+
+      public function enviarMensaje()
+      {
+
+
+          $idchat = $_POST["idchat"];
+          $chat = $this->chatMapper->getChatById($idchat);
+
+          $numeroMensajes = $this->lineaChatMapper->getNumMensajes($chat->getId());
+
+          if ($this->view->getVariable("currentuser")->getEmail() == $chat->getEmailUsuarioComprador()) {
+              $enviado = 1;
+          } else {
+              $enviado = 0;
+          }
+
+          $linea = new LineaChat($chat->getId(), ($numeroMensajes + 1), NULL, $_POST["mensaje"], 0, $enviado);
+          $this->lineaChatMapper->guardaLinea($linea);
+
+          $lineaChat = $this->lineaChatMapper->getListaLineaChat($idchat);
+
+          $this->view->setVariable("chat", $chat);
+
+          $this->view->setVariable("lineaChat", ($lineaChat == NULL) ? new LineaChat($idchat) : $lineaChat);
+
+          $this->view->redirect("chat", "chat", "id=" . $idchat);
       }
   }
  ?>

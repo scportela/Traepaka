@@ -24,49 +24,87 @@
 
     public function getListForUser($email){
       $stmt=$this->db->prepare("SELECT C.*,
-                                L.mensaje AS ultimomensaje,
-                                L.fecha_hora AS fechahoraultimomensaje,
-                                A.titulo as tituloarticulo,
-                                A.descripcion AS descripcionarticulo,
-                                A.precio AS precioarticulo,
-                                A.foto AS fotoarticulo,
-                                A.email_usuario AS emailvendedor,
-                                U.foto as foto
-                                FROM usuario AS U, articulo AS A RIGHT OUTER JOIN chat AS C ON A.id=C.id_articulo
-                                LEFT OUTER JOIN linea_chat AS L ON C.id=L.id_chat
-                                WHERE (A.email_usuario_vendedor=? OR C.email_usuario_comprador=?) AND
-                                      (U.email=emailvendedor OR U.email=C.email_usuario_comprador)");
+                                       A.titulo as tituloarticulo, 
+                                       A.descripcion AS descripcionarticulo, 
+                                       A.precio AS precioarticulo, 
+                                       A.foto AS fotoarticulo, 
+                                       A.email_usuario AS emailvendedor 
+                                       FROM articulo AS A INNER JOIN chat AS C ON A.id=C.id_articulo 
+                                       WHERE (A.email_usuario=? OR C.email_usuario_comprador=?)");
       $stmt->execute(array($email,$email));
       $chat_db=$stmt->fetchAll(PDO::FETCH_ASSOC);
       $chats = array();
 
   		foreach ($chat_db as $chat) {
-  			array_push($chats, new Chat($chat["id"],
-                                    $chat["id_articulo"],
-                                    $chat["fecha_hora"],
+            if ($email == $chat["emailvendedor"]) {
+                $emailfoto = $chat["email_usuario_comprador"];
+            } else {
+                $emailfoto = $chat["emailvendedor"];
+            }
+
+            $stmt2 = $this->db->prepare("SELECT L.mensaje AS ultimomensaje, 
+                                       L.fecha_hora AS fechahoraultimomensaje
+                                       FROM linea_chat AS L
+                                       WHERE id_chat=?
+                                       ORDER BY id DESC
+                                       LIMIT 1");
+            $stmt2->execute(array($chat["id"]));
+            $ultimalinea = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+            $newChat = new Chat($chat["id"],
+                $chat["id_articulo"],
+                $chat["fecha_hora"],
                 $chat["emailvendedor"],
-                                    $chat["email_usuario_comprador"],
-                                    $chat["ultimomensaje"],
-                $chat["fechahoraultimomensaje"],
-                                    new Producto($chat["id_articulo"],
-                                                 $chat["emailvendedor"],
-                                                 $chat["descripcionarticulo"],
-                                                 $chat["tituloarticulo"],
-                                                 $chat["fotoarticulo"],
-                                                 $chat["precioarticulo"]),
-                $chat["foto"]));
+                $chat["email_usuario_comprador"],
+                $ultimalinea["ultimomensaje"],
+                $ultimalinea["fechahoraultimomensaje"],
+                new Producto($chat["id_articulo"],
+                    $chat["emailvendedor"],
+                    $chat["descripcionarticulo"],
+                    $chat["tituloarticulo"],
+                    $chat["fotoarticulo"],
+                    $chat["precioarticulo"]),
+                $this->fotoUsuario($emailfoto));
+
+            if ($email == $chat["emailvendedor"]) {
+                $enviado = 1;
+            } else {
+                $enviado = 0;
+            }
+
+            $newChat->setNumeroMensajesSinLeer($this->numeroMensajesSinLeer($newChat->getId(), $enviado));
+            array_push($chats, $newChat);
   		}
 
       return $chats;
     }
 
     public function getChatById($id){
-      $stmt=$this->db->prepare("SELECT * FROM chat WHERE id=?");
+        $stmt = $this->db->prepare("SELECT C.*,
+                                       A.titulo as tituloarticulo, 
+                                       A.descripcion AS descripcionarticulo, 
+                                       A.precio AS precioarticulo, 
+                                       A.foto AS fotoarticulo, 
+                                       A.email_usuario AS emailvendedor 
+                                       FROM articulo AS A INNER JOIN chat AS C ON A.id=C.id_articulo
+                                       WHERE C.id=?");
       $stmt->execute(array($id));
       $chat=$stmt->fetch(PDO::FETCH_ASSOC);
 
       if($chat!=NULL){
-          return new Chat($chat["id"], $chat["id_articulo"], $chat["fecha_hora"], NULL, $chat["email_usuario_comprador"]);
+          return new Chat($chat["id"],
+              $chat["id_articulo"],
+              $chat["fecha_hora"],
+              $chat["emailvendedor"],
+              $chat["email_usuario_comprador"],
+              NULL,
+              NULL,
+              new Producto($chat["id_articulo"],
+                  $chat["emailvendedor"],
+                  $chat["descripcionarticulo"],
+                  $chat["tituloarticulo"],
+                  $chat["fotoarticulo"],
+                  $chat["precioarticulo"]));;
       }else{
         return NULL;
       }
@@ -119,5 +157,23 @@
       $stmt=$this->db->prepare("DELETE FROM chat WHERE id=?");
       $stmt->execute(array($id));
     }
+
+      public function numeroMensajesSinLeer($id_chat, $enviado)
+      {
+          $stmt = $this->db->prepare("SELECT COUNT(*) as numero FROM linea_chat WHERE id_chat=? AND leido=0 AND enviado_comprador=?");
+          $stmt->execute(array($id_chat, $enviado));
+          $num = $stmt->fetch(PDO::FETCH_ASSOC);
+
+          return $num["numero"];
+      }
+
+      public function fotoUsuario($email)
+      {
+          $stmt = $this->db->prepare("SELECT foto FROM usuario WHERE email=?");
+          $stmt->execute(array($email));
+          $f = $stmt->fetch(PDO::FETCH_ASSOC);
+
+          return $f["foto"];
+      }
   }
  ?>

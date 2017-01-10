@@ -8,29 +8,36 @@
   $errors = $view->getVariable("errors");
   $chats = $view->getVariable("chat");
   $user = $view->getVariable("currentuser");
-
 ?>
-      <div class="col-md-2"></div>
-   <div class="row col-md-8 col-sm-12 col-xs-12">
-     <div class="listadoChats">
+<div class="row contenidolistado">
+    <div class="listadoChats col-md-12">
        <?php foreach($chats as $chat):?>
 
-           <div class="chatLista">
+           <div class="chatLista  col-md-12">
            <?php if ($user->getEmail()==$chat->getEmailUsuarioComprador() ): ?>
 
                <div class="imagenPerfil">
-               <div class="notificacion"><span>2</span></div>
+                   <?php if ($chat->getNumeroMensajesSinLeer() != 0): ?>
+                       <div class="notificacion"><span> <?= $chat->getNumeroMensajesSinLeer() ?></span></div>
+                   <?php endif; ?>
                <img src="<?php echo $chat->getFotoUsuario(); ?>">
              </div>
              <div class="vistaPreliminarChat">
-               <div class="ultimoMensaje">
-                 <p><?php echo  $chat->getUltimoMensaje(); ?></p>
-               </div>
+                 <a href="index.php?controller=chat&amp;action=chat&amp;id=<?= $chat->getId(); ?>">
+                     <div class="ultimoMensaje">
+                         <p><?php
+                             if ($chat->getUltimoMensaje() == NULL) {
+                                 echo "No hay mensajes para este chat";
+                             } else {
+                                 echo $chat->getUltimoMensaje();
+                             }
+                             ?></p>
+                     </div>
+                 </a>
                <div class="horaMensaje">
-                 <p><?php echo  $chat->getFechaHoraUltimoMensaje(); ?></p>
-               </div>
-               <div class="opcionesChat">
-                 <button class="b-redondo b-borrar" type="button" name="button"> <?= i18n("Delete Chat") ?></button>
+                   <p><?php if ($chat->getUltimoMensaje() != NULL) {
+                           echo $chat->getFechaHoraUltimoMensaje();
+                       } ?></p>
                </div>
              </div>
              <div class="imagenListaDer">
@@ -44,19 +51,28 @@
 
                </div>
              <div class="imagenPerfil">
+                 <?php if ($chat->getNumeroMensajesSinLeer() != 0): ?>
+                     <div class="notificacion"><span> <?= $chat->getNumeroMensajesSinLeer() ?></span></div>
+                 <?php endif; ?>
                <img src="<?php echo  $chat->getFotoUsuario(); ?>">
              </div>
              <div class="vistaPreliminarChat">
-               <div class="ultimoMensaje">
-                 <p><?= $chat->getUltimoMensaje(); ?></p>
-               </div>
+                 <a href="index.php?controller=chat&amp;action=chat&amp;id=<?= $chat->getId(); ?>">
+                     <div class="ultimoMensaje">
+                         <p><?php
+                             if ($chat->getUltimoMensaje() == NULL) {
+                                 echo "No hay mensajes para este chat";
+                             } else {
+                                 echo $chat->getUltimoMensaje();
+                             } ?></p>
+                     </div>
+                 </a>
                <div class="horaMensaje">
-                 <p><?= $chat->getUltimoMensaje(); ?></p>
+                   <p><?php if ($chat->getUltimoMensaje() != NULL) {
+                           echo $chat->getFechaHoraUltimoMensaje();
+                       } ?></p>
                </div>
 
-                 <div class="opcionesChat">
-                 <button class="b-redondo b-borrar" type="button" name="button"><?= i18n("Delete Chat") ?> </button>
-               </div>
              </div>
            <?php endif; ?>
          </div>

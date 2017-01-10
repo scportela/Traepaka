@@ -62,7 +62,9 @@
                      <a href="index.php?controller=producto&amp;action=nuevoProducto"><img src="img/anadir.png"/></a>
                    </li>
                    <li class="header_botones">
-                     <button class="b-redondo b-header" type="button" name="button"> Chat </button>
+                       <button class="b-redondo b-header" type="button" name="button"
+                               onclick=" location.href='index.php?controller=chat&amp;action=listadoChats'"> Chat
+                       </button>
                    </li>
                    <li class="header_botones">
                      <?php $email=$currentuser->getEmail(); ?>
@@ -102,9 +104,6 @@
     </header>
 
     <main>
-      <div id="flash">
-	       <?= $view->popFlash() ?>
-      </div>
       <?= $view->getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
     </main>
 

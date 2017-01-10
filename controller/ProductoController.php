@@ -56,6 +56,7 @@
           $producto->setFoto($ruta);
 
           $this->productoMapper->save($producto);
+            $this->view->render("producto", "listadoProducto");
         }
 
         $this->view->render("producto", "nuevoProducto");

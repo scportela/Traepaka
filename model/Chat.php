@@ -10,6 +10,7 @@
     private $fechahoraultimomensaje;
     private $fotousuario;
     private $producto;
+      private $numeroMensajesSinLeer;
 
       public function __construct($id = NULL, $id_articulo = NULL, $fecha_hora = NULL,
                                   $email_usuario_vendedor = NULL, $email_usuario_comprador = NULL,
@@ -103,5 +104,15 @@
     public function setFotoUsuario($foto){
       $this->fotoUsuario=$foto;
     }
+
+      public function getNumeroMensajesSinLeer()
+      {
+          return $this->numeroMensajesSinLeer;
+      }
+
+      public function setNumeroMensajesSinLeer($numeroMensajesSinLeer)
+      {
+          $this->numeroMensajesSinLeer = $numeroMensajesSinLeer;
+      }
   }
  ?>

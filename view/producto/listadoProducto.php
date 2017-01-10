@@ -10,7 +10,9 @@
  $view->setVariable("title", "Registro");
 ?>
 <article id="maincontent">
-    <?php foreach ($productos as $producto): ?>
+    <?php
+    if ($productos != NULL):
+        foreach ($productos as $producto): ?>
     <a href="index.php?controller=producto&amp;action=detalleProducto&amp;id=<?php echo $producto->getId() ?> ">
     <div class="articulo">
       <div class="articuloContent">
@@ -36,5 +38,6 @@
       </a>
       </div>
    </div>
-    <?php endforeach; ?>
+        <?php endforeach;
+    endif; ?>
 </article>

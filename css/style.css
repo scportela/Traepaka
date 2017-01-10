@@ -26,12 +26,12 @@ header {
 }
 
 article{
-  order 3;
+  order: 3;
   flex-basis: 100%;
 }
 
 footer{
-  order 4;
+  order: 4;
   flex-basis: 100%;
 }
 
@@ -73,7 +73,7 @@ div a{
   border:1px solid #ddd;
   background-color: #FFF;
   width:100%;
-  height: 80%;
+  height: 480px;
   overflow: auto;
   display: flex;
   flex-flow: row wrap;
@@ -82,14 +82,13 @@ div a{
   overflow: auto;
 }
 .mensajeEnviado,.mensajeRecibido{
-  max-width: 99%;
+  max-width: 100%;
   border:1px solid #ddd;
   flex-basis: 100%;
   padding: 5%;
   margin: 1%;
 }
 .mensajeEnviado{
-  max-width: 75%;
   border:1px solid #ddd;
   float: left;
   text-align: right;
@@ -97,6 +96,8 @@ div a{
 }
 .mensajeRecibido{
   background-color: #D36353;
+  text-align: left;
+  float: right;
 }
 
 .producto{
@@ -179,7 +180,7 @@ div a{
 
 .imagenPerfil{
   float: left;
-  overflow: hidden;
+  overflow: auto;
   height: 90px;
   width: auto;
   padding-left: 3px;
@@ -197,6 +198,10 @@ div a{
   padding: 3px;
 }
 
+.contenidolistado {
+  width: 200%;
+  margin: auto;
+}
 
 .imagenListaDer img,.imagenListaIzq img  {
   height: 100%;
@@ -247,7 +252,7 @@ div a{
   height:60%;
   width:60%;
   flex-basis: 30%;
-  order 1;
+  order: 1;
 }
 .imgVP{
   width: 100%;
@@ -294,7 +299,7 @@ div a{
 }
 
 .header_botones{
-  order 3;
+  order: 3;
   margin-left: 2px;
   margin-right: 2px;
 }
@@ -348,4 +353,9 @@ div a{
   column-gap: 6px;
   padding: 4px 6px;
   height: 100%;
+}
+
+#selectoridioma {
+
+  color: #CED5D7;
 }
