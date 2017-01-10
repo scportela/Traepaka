@@ -21,9 +21,6 @@
   <div>
     <label><?= i18n("Photo") ?></label><input type='file' name="foto" id="foto">
   </div>
-  <?php $email=$user->getEmail(); ?>
-  <input type="hidden" name="email" value="<?php echo $email; ?>">
-
     <input type="submit" value="<?= i18n("New Item") ?>">
   </div>
 </form>

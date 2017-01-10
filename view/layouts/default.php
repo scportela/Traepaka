@@ -67,8 +67,6 @@
                    <li class="header_botones">
                      <?php $email=$currentuser->getEmail(); ?>
                      <form action="index.php?controller=producto&amp;action=listadoMisProductos" method="POST">
-                       <input type="hidden" name="email" value="<?php echo $email; ?>">
-
                        <button class="b-redondo b-header" type="submit" name="button"> <?= i18n("My Profile") ?></button>
                      <form>
                    </li>

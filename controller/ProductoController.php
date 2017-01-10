@@ -31,8 +31,7 @@
       }
 
       public function listadoMisProductos(){
-        $email = $_POST["email"];
-        $productos = $this->productoMapper->getMisProductos($email);
+        $productos = $this->productoMapper->getMisProductos($this->view->getVariable("currentuser")->getEmail());
         $this->view->setVariable("producto", $productos);
         $this->view->render("producto", "listadoProducto");
       }
@@ -42,7 +41,7 @@
         if (isset($_POST["titulo"])){
           $producto->setTitulo($_POST["titulo"]);
           $producto->setDescripcion($_POST["descripcion"]);
-          $producto->setEmail($_POST["email"]);
+          $producto->setEmail($this->view->getVariable("currentuser")->getEmail());
           $producto->setPrecio($_POST["precio"]);
           //Recogemos archivo
           $foto=($_FILES["foto"]);
